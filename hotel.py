@@ -21,11 +21,11 @@ def upload():
         df = pd.read_csv(f.filename)
         jsonfilename = f.filename.replace(".csv",".json")
         df.to_json(jsonfilename, orient= 'records')
-        return jsonify(df.head().to_dict(orient= 'records')), 200
+        return jsonify(df.head().to_dict(orient= 'records')), 202
     
     else:
         return jsonify({'error':'file is not csv'}), 400
-    
+    #enviar a requisição mas retorna erro 500
    
 if __name__ == '__main__':
     app.run(debug=True)
